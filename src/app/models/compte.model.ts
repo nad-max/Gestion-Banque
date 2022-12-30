@@ -1,6 +1,6 @@
 export interface Compte {
-    idUser: number;
+    id: number;
     type: string;
-    gestion: string;
-
+    gest: string;
+    solde: 0;
 }

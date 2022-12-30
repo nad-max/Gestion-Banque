@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
+
+import { AccountService } from '../../service/account.service';
 
 @Component({
   selector: 'app-account',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
+  comptes?: any[];
 
-  constructor() { }
+    constructor(private accountService: AccountService) {}
 
-  ngOnInit(): void {
-  }
-
+    ngOnInit() {
+        this.accountService.getAll()
+            .pipe(first())
+            .subscribe(compte => this.comptes = compte);
+          }
 }

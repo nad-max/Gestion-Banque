@@ -4,7 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, materialize, dematerialize } from 'rxjs/operators';
 
 // array in local storage for registered users
-const comptesKey = 'ons';
+const comptesKey = 'user';
 let comptes: any[] = JSON.parse(localStorage.getItem(comptesKey)!) || [];
 
 @Injectable()
@@ -20,8 +20,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return addAccount();
                 // case url.endsWith('/users/register') && method === 'POST':
                 //     return register();
-                // case url.endsWith('/users') && method === 'GET':
-                //     return getUsers();
+                 case url.endsWith('/component/account') && method === 'GET':
+                     return getComptes();
                 // case url.match(/\/users\/\d+$/) && method === 'GET':
                 //     return getUserById();
                 // case url.match(/\/users\/\d+$/) && method === 'PUT':
@@ -39,15 +39,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         
 
         function addAccount() {
-            const compte = body
-
-            compte.idUser = comptes.length ? Math.max(...comptes.map(x => x.id)) + 1 : 1;
+            const compte = body;
             comptes.push(compte);
             localStorage.setItem(comptesKey, JSON.stringify(comptes));
             return ok();
+            
         }
 
-        function getcomptes() {
+        function getComptes() {
             return ok(comptes.map(x => basicDetails(x)));
         }
 
@@ -102,8 +101,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function basicDetails(compte: any) {
-            const { idUser, type, gestion } = compte;
-            return { idUser, type, gestion };
+            const { id, type, gest, solde } = compte;
+            return { id, type, gest, solde };
         }
 
         function isLoggedIn() {
