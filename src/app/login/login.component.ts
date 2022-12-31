@@ -24,7 +24,7 @@ onSubmit() {
   //True if all the fields are filled
   if(this.submitted)
   {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/component/account']);
   }
  
 }

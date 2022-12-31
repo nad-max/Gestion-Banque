@@ -1,13 +1,5 @@
 import { Routes } from '@angular/router';
-import { NgbdpaginationBasicComponent } from './pagination/pagination.component';
 import { AlertComponent } from '../alert/alert.component';
-
-import { NgbdDropdownBasicComponent } from './dropdown-collapse/dropdown-collapse.component';
-import { NgbdnavBasicComponent } from './nav/nav.component';
-import { BadgeComponent } from './badge/badge.component';
-import { ButtonsComponent } from './buttons/buttons.component';
-import { CardsComponent } from './card/card.component';
-import { TableComponent } from './table/table.component';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { AddCardComponent } from './add-card/add-card.component';
 import { AddCheckComponent } from './add-check/add-check.component';
@@ -19,37 +11,10 @@ export const ComponentsRoutes: Routes = [
 	{
 		path: '',
 		children: [
-			{
-				path: 'table',
-				component: TableComponent
-			},
-			{
-				path: 'card',
-				component: CardsComponent
-			},
-			{
-				path: 'pagination',
-				component: NgbdpaginationBasicComponent
-			},
-			{
-				path: 'badges',
-				component: BadgeComponent
-			},
+			
 			{
 				path: 'alert',
 				component: AlertComponent
-			},
-			{
-				path: 'dropdown',
-				component: NgbdDropdownBasicComponent
-			},
-			{
-				path: 'nav',
-				component: NgbdnavBasicComponent
-			},
-			{
-				path: 'buttons',
-				component: ButtonsComponent
 			},
 			{
 				path: 'add-account',
