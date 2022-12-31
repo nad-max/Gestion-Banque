@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../service/account.service';
 import { first } from 'rxjs/operators';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-add-account',
@@ -20,6 +21,7 @@ export class AddAccountComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private accountService: AccountService,
+    private alertService: AlertService
     ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class AddAccountComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
+                    this.alertService.success('Compte créé', { keepAfterRouteChange: true });
                     this.router.navigate(['../account'], { relativeTo: this.route });
                 },
                 error: error => {

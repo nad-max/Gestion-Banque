@@ -1,48 +1,110 @@
-
-<div style="text-align: center;">
-  <b class="logo-icon">
-    <img
+<div class="card" style="width: 40%; margin:auto"  >
+  <h4 style="text-align: center;" class="card-header">Demander un chéquier
+      <br> 
+      <img
+      src="assets/images/icons/check-book.png"
+      alt="check-book"
       class="dark-logo"
-      src="assets/images/bg/cheque.png"
-      alt="Card image cap"
+      width="100"
     />
-  </b>
-</div>
+  </h4>
+  <div class="card-body">
+      <form [formGroup]="form" >
 
+        <div class="form-group">
+          <label for="ribTo">RIB</label>
+          <input type="text" formControlName="rib" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rib.errors }" />
+          <div *ngIf="submitted && f.rib.errors" class="invalid-feedback">
+              <div *ngIf="f.rib.errors.required">saisir RIB</div>
+          </div>
+      </div>
+      <br>
 
-<div class="p-3">
-    <h4 class="card-title mb-0">Commander un chéquier</h4>
+          <div class="form-group">
+              <label for="nbCheck">Nombre de chèques</label>
+              <select id="nbCheck" formControlName="nbCheck" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nbCheck.errors }">
+                <option value=""></option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+            </select>
+          </div>
+          <br>
+          <div class="form-group">
+              <label for="barre">Barré</label>
+              <select id="barre" formControlName="barre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.barre.errors }">
+                <option value=""></option>
+                <option value="oui">Oui</option>
+                <option value="non">Non</option>
+            </select>
+          </div>
+
+          <!-- <div class="form-group" >
+              <label for="benefic">Bénéficiaire</label>
+              <select id="benefic" formControlName="benefic" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.benefic.errors }">
+                  <option *ngFor="let b of beneficiaires">{{b}}</option>
+              </select>
+          </div>
+
+<div *ngIf="f.benefic.value!='moi'"> 
+          <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+              <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                  <div *ngIf="f.nom.errors.required">saisir nom</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+              <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="f.prenom.errors.required">saisir prenom</div>
+              </div>
+          </div>
+          <br>
+              
+              <div class="form-group">
+                  <label for="sexe">Sexe </label>
+                  
+                  <div class="form-check">
+                  <input type="radio" class="form-check-input" name="sexe" id="femme" checked>
+                  <label class="form-check-label" for="femme">Femme </label>
+                  </div>
+                  <div class="form-check">
+                  <input type="radio" class="form-check-input" name="sexe" id="homme">
+                  <label class="form-check-label" for="homme">Homme </label>
+                  </div>
+                  <div *ngIf="submitted && f.sexe.errors" class="invalid-feedback">
+                      <div *ngIf="f.sexe.errors.required">saisir sexe</div>
+                  </div>
+              </div>
+
+          <div class="form-group">
+              <label for="dateNaiss">Date de naissance</label>
+              <input type="date" formControlName="dateNaiss" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateNaiss.errors }" />
+              <div *ngIf="submitted && f.dateNaiss.errors" class="invalid-feedback">
+                  <div *ngIf="f.dateNaiss.errors.required">saisir date de naissance</div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.invalid">Email invalide</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="numTel">Numéro de télephone</label>
+              <input type="text" formControlName="numTel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numTel.errors }" />
+          </div>
+      </div> -->
+      <br>
+          <div class="form-group" style="text-align: center;">
+              <button [disabled]="loading" class="btn btn-light" (click)="send()">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  Confirmer
+              </button>
+              <a routerLink="/" class="btn btn-light" style="margin-left: 10px;">Annuler</a>
+          </div>
+      </form>
   </div>
-  <div class="card-body border-top">
-    <form class="row g-3">
-      <div class="col-md-4">
-        <label for="validationDefault01" class="form-label">CIN</label>
-        <input type="text" class="form-control" id="validationDefault01" value="12345678" required disabled>
-      </div>
-      <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">Nom</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Medini" required disabled>
-      </div>
-      <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">Prenom</label>
-        <input type="text" class="form-control" id="validationDefault03" value="Nada" required disabled>
-      </div>
-      <div class="col-md-4">
-        <label for="validationDefaultUsername" class="form-label">Username</label>
-        <div class="input-group">
-          <span class="input-group-text" id="inputGroupPrepend2">@</span>
-          <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required placeholder="username" value="username">
-        </div>
-      </div>
-      <div class="col-md-4">
-          <label for="validationDefault03" class="form-label"> Numéro Téléphone</label>
-          <input type="number" class="form-control" id="validationDefault03" required placeholder="Numéro de téléphone" value="99494447">
-      </div>
-      
-      <div class="col-12">
-        <button class="btn btn-info" type="submit">Commander</button>
-      </div>
-    </form>
-
- 
-</div>

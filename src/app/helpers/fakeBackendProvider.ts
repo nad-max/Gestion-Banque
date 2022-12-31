@@ -4,8 +4,12 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, materialize, dematerialize } from 'rxjs/operators';
 
 // array in local storage for registered users
-const comptesKey = 'user';
+const comptesKey = 'comptes';
+const demandesCheckKey = 'demande chequier';
+const demandesCardKey = 'demande carte';
 let comptes: any[] = JSON.parse(localStorage.getItem(comptesKey)!) || [];
+let demandesCheck: any[] = JSON.parse(localStorage.getItem(demandesCheckKey)!) || [];
+let demandesCard: any[] = JSON.parse(localStorage.getItem(demandesCardKey)!) || [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -18,14 +22,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             switch (true) {
                 case url.endsWith('/component/add-account') && method === 'POST':
                     return addAccount();
+                case url.endsWith('/component/add-check') && method === 'POST':
+                    return addCheck();
+                case url.endsWith('/component/add-card') && method === 'POST':
+                    return addCard();
                 // case url.endsWith('/users/register') && method === 'POST':
                 //     return register();
                  case url.endsWith('/component/account') && method === 'GET':
                      return getComptes();
                 // case url.match(/\/users\/\d+$/) && method === 'GET':
                 //     return getUserById();
-                // case url.match(/\/users\/\d+$/) && method === 'PUT':
-                //     return updateUser();
+                case url.endsWith('/component/transfer') && method === 'POST':
+                     return updateCompte();
                 // case url.match(/\/users\/\d+$/) && method === 'DELETE':
                 //     return deleteUser();
                 default:
@@ -43,7 +51,20 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             comptes.push(compte);
             localStorage.setItem(comptesKey, JSON.stringify(comptes));
             return ok();
-            
+        }
+
+        function addCheck() {
+            const check = body;
+            demandesCheck.push(check);
+            localStorage.setItem(demandesCheckKey, JSON.stringify(demandesCheck));
+            return ok();   
+        }
+
+        function addCard() {
+            const card = body;
+            demandesCard.push(card);
+            localStorage.setItem(demandesCardKey, JSON.stringify(demandesCard));
+            return ok();   
         }
 
         function getComptes() {
@@ -57,23 +78,24 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         //     return ok(basicDetails(user));
         // }
 
-        // function updateUser() {
-        //     if (!isLoggedIn()) return unauthorized();
+        function updateCompte() {
 
-        //     let params = body;
-        //     let user = users.find(x => x.id === idFromUrl());
+            const transfer = body;
+            console.log(transfer);
+            for(let compte of comptes){
+                if(compte.id == transfer.ribFrom){
+                compte.solde-=transfer.montant;
 
-        //     // only update password if entered
-        //     if (!params.password) {
-        //         delete params.password;
-        //     }
+                localStorage.setItem(comptesKey, JSON.stringify(compte));
+                }
 
-        //     // update and save user
-        //     Object.assign(user, params);
-        //     localStorage.setItem(usersKey, JSON.stringify(users));
-
-        //     return ok();
-        // }
+                if(compte.id == transfer.ribTo){
+                    compte.solde+=transfer.montant;
+                    localStorage.setItem(comptesKey, JSON.stringify(compte));
+                }
+                }
+            return ok();
+        }
 
         // function deleteUser() {
         //     if (!isLoggedIn()) return unauthorized();

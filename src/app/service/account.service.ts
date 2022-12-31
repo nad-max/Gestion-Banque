@@ -23,7 +23,6 @@ export class AccountService {
 
   create(compte: Compte ) {
     return this.http.post(`${environment.apiUrl}/component/add-account`, compte);
-
 }
 
   getAll() {

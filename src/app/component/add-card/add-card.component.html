@@ -42,8 +42,10 @@
               <!-- Logo text -->
               <span class="logo-text">...</span>
               <br>
-            
-             
+              <br>
+              <div class="col-12" style="text-align: center;">
+                <button class="btn btn-info" type="submit" (click)='commander("classique")'>Commander</button>
+              </div>
               
               
             </div>
@@ -76,6 +78,7 @@
                 Vous souhaitez bénéficier des avantages d'une carte haut de gamme ? Vous voulez disposer de plafonds de paiement et de retrait importants à la mesure de votre statut de client privilégié ?
   Banque Urban vous propose <b> la Carte Gold</b> . 
               </p>
+              <br>
               <b class="logo-icon">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Light Logo icon -->
@@ -90,7 +93,9 @@
               <span class="logo-text"> ...</span>
               <br>
               <br>
-             
+              <div class="col-12" style="text-align: center;">
+                <button class="btn btn-info" type="submit" (click)='commander("gold")'>Commander</button>
+              </div>
             </div>
           </div>
           <!-- ---------------------
@@ -122,6 +127,7 @@
               </p>
               <br>
               <br>
+              <br>
               <b class="logo-icon">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Light Logo icon -->
@@ -136,6 +142,9 @@
               <span class="logo-text"> ... </span>
               <br>
               <br>
+              <div class="col-12" style="text-align: center;">
+                <button class="btn btn-info" type="submit" (click)='commander("epargne")'>Commander</button>
+              </div>
               
             </div>
           </div>
@@ -167,6 +176,7 @@
                 Banque Urban vous propose <b>la Carte Sayedati</b>.  
               </p>
               <br>
+              <br>
               <b class="logo-icon">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Light Logo icon -->
@@ -181,6 +191,10 @@
               <span class="logo-text"> ...</span>
               <br>
               <br>
+              
+              <div class="col-12" style="text-align: center;">
+                <button class="btn btn-info" type="submit" (click)='commander("sayedati")'>Commander</button>
+              </div>
              
             </div>
           </div>
@@ -190,51 +204,4 @@
           <!-- Card -->
         </div>
       </div>
-  
-  
-  
-  
-        <div class="p-3">
-          <h4 class="card-title mb-0">Commander une carte</h4>
-        </div>
-        <div class="card-body border-top">
-          <form class="row g-3">
-            <div class="col-md-4">
-              <label for="validationDefault01" class="form-label">CIN</label>
-              <input type="text" class="form-control" id="validationDefault01" value="12345678" required disabled>
-            </div>
-            <div class="col-md-4">
-              <label for="validationDefault02" class="form-label">Nom</label>
-              <input type="text" class="form-control" id="validationDefault02" value="Medini" required disabled>
-            </div>
-            <div class="col-md-4">
-              <label for="validationDefault02" class="form-label">Prenom</label>
-              <input type="text" class="form-control" id="validationDefault03" value="Nada" required disabled>
-            </div>
-            <div class="col-md-4">
-              <label for="validationDefaultUsername" class="form-label">Username</label>
-              <div class="input-group">
-                <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required placeholder="username" value="username">
-              </div>
-            </div>
-            <div class="col-md-4">
-                <label for="validationDefault03" class="form-label"> Numéro Téléphone</label>
-                <input type="number" class="form-control" id="validationDefault03" required placeholder="Numéro de téléphone" value="99494447">
-            </div>
-            <div class="col-md-4">
-                <label for="validationDefault04" class="form-label">Type carte</label>
-                <select class="form-select" id="validationDefault04" required>
-                    <option *ngFor="let type of types">{{type}}</option>
-
-                </select>
-            </div>
-            
-            <div class="col-12">
-              <button class="btn btn-info" type="submit">Commander</button>
-            </div>
-          </form>
-          
-        </div>
-    </div>
-  </div>
+ 

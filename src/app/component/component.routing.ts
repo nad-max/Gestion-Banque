@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { NgbdpaginationBasicComponent } from './pagination/pagination.component';
-import { NgbdAlertBasicComponent } from './alert/alert.component';
+import { AlertComponent } from '../alert/alert.component';
 
 import { NgbdDropdownBasicComponent } from './dropdown-collapse/dropdown-collapse.component';
 import { NgbdnavBasicComponent } from './nav/nav.component';
@@ -37,7 +37,7 @@ export const ComponentsRoutes: Routes = [
 			},
 			{
 				path: 'alert',
-				component: NgbdAlertBasicComponent
+				component: AlertComponent
 			},
 			{
 				path: 'dropdown',
