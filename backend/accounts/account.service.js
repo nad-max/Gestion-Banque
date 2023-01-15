@@ -26,7 +26,7 @@ async function transfer(params) {
      if (! await db.Account.findOne({ where: { rib: params.ribFrom, idUser: params.idUser } })) {
         throw 'RIB source introuvable ';
     }
-    if (! await db.Account.findOne({ where: { rib: params.ribTo, idUser: params.idUser } })) {
+    if (! await db.Account.findOne({ where: { rib: params.ribTo } })) {
         throw 'RIB destinataire introuvable ';
     }
 
