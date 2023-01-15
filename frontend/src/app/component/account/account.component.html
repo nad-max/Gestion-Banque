@@ -1,0 +1,19 @@
+<h1>Mes comptes</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">RIB</th>
+            <th style="width: 30%">Type</th>
+            <th style="width: 30%">Gestion par</th>
+            <th style="width: 30%">Solde</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let compte of comptes">
+            <td>{{compte.rib}}</td>
+            <td>{{compte.type}}</td>
+            <td>{{compte.gest}}</td>
+            <td>{{compte.solde}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,10 @@
+﻿{
+    "database": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "",
+        "database": "banque"
+    },
+    "secret": "7010AA41-0F5E-4BFC-A8A6-3A879A7AC5B0"
+}

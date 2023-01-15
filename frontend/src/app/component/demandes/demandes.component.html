@@ -1,0 +1,37 @@
+<h1>Mes demandes chéquier</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 20%">RIB</th>
+            <th style="width: 20%">Nombre de chèques</th>
+            <th style="width: 20%">Barré</th>
+            <th style="width: 10%">Etat demande</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let chequier of chequiers ">
+            <td>{{chequier.rib}}</td>
+            <td>{{chequier.nbCheck}}</td>
+            <td>{{chequier.barre}}</td>
+            <td>{{chequier.etat}}</td>
+        </tr> 
+    </tbody>
+</table>
+
+<h1>Mes demandes carte</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">RIB</th>
+            <th style="width: 30%">Type</th>
+            <th style="width: 30%" >Etat demande</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let carte of cartes">
+            <td>{{carte.rib}}</td>
+            <td>{{carte.type}}</td>
+            <td>{{carte.etat}}</td>
+        </tr>
+    </tbody>
+</table>
